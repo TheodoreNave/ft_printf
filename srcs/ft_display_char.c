@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 14:35:11 by tnave             #+#    #+#             */
-/*   Updated: 2021/02/24 13:27:14 by tnave            ###   ########.fr       */
+/*   Updated: 2021/02/26 14:23:33 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,25 @@
 
 int             ft_display_char(pfstruct *type, pfconv c_conv, va_list iter)
 {
-        char c[2];
+        int c;
         int i;
 
-        c[0] = (char)va_arg(iter, int);
-        c[1] = '\0';
+        c = va_arg(iter, int);
+
         i = 1;
-        if (c_conv.dash)			//  check dash
-	{
-                add_to_buff(type, c[0]);
-	        while (i < c_conv.width)
-		{
-			add_to_buff(type, ' ');
-			i++;
-		}
-	} 
-        else if (c_conv.width)
+        
+        if (c_conv.dash == 1)
         {
-                while (i < c_conv.width)
-		{
-			add_to_buff(type, ' ');
-			i++;
-		}
-                add_to_buff(type, c[0]);
+                add_to_buff(type, (char)c);
+		padding(' ', type, c_conv.width - 1);
+                return (0);
+	}
+        if (c_conv.width > i)
+	{
+                padding(' ', type, c_conv.width - 1);
+                add_to_buff(type, (char)c);
+        } else {
+                add_to_buff(type, (char)c);
         }
-        else
-                add_to_buff(type, c[0]);
-        return (0);
+        return (c_conv.width);
 } 

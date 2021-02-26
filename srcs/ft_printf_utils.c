@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 11:26:23 by tnave             #+#    #+#             */
-/*   Updated: 2021/02/24 13:27:28 by tnave            ###   ########.fr       */
+/*   Updated: 2021/02/26 15:07:02 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char	is_str(char c)
 
 char	is_char(char c)
 {
-	return (c == 'c' || c == '%');
+	return (c == 'c');
 }
 
 char	is_width(char c)
@@ -73,12 +73,14 @@ int		ft_isdigit(int c)
 	return (0);
 }
 
-int		check_type(char c)
-{
-	return (c == 'c' || c == 'd' || c == 'u' || c == 'i' || c == 's' || c == 'x' || c == 'X' || c == 'p');					// Maybe only one is cool ???? lol
-}
-
 int		ft_type(char c)
 {
-	return (c == 'c' || c == 'd' || c == 'u' || c == 'i' || c == 's' || c == 'x' || c == 'X' || c == 'p');
+	if (c == 'c' || c == '%' || c == 'd' || c == 'u' || c == 'i' || c == 's' || c == 'x' || c == 'X' || c == 'p' || c == '\0')
+		return (1);
+	return (0);
+}
+
+int		ft_mod(char c)
+{
+	return (c == '%');
 }

@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 14:31:31 by tnave             #+#    #+#             */
-/*   Updated: 2021/02/24 15:09:08 by tnave            ###   ########.fr       */
+/*   Updated: 2021/02/26 15:48:32 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <stdint.h>
 # include <limits.h>
 # include <libc.h>
-# define BUFF_MAX 256
+# define BUFF_MAX 12
 
 typedef struct      d_list
 {
@@ -73,6 +73,7 @@ int			ft_display_hex(pfstruct *type, pfconv c_conv, va_list iter);
 int			ft_display_ptr(pfstruct *type, pfconv c_conv, va_list iter);
 int     	ft_display_str(pfstruct *type, pfconv c_conv, va_list iter);
 int     	ft_display_char(pfstruct *type, pfconv c_conv, va_list iter);
+int			ft_display_modu(pfstruct *type, pfconv c_conv);
 int			ft_display_unsigned_int(pfstruct *type, pfconv c_conv, va_list iter);
 char		is_u_int(char c);
 int			ft_isdigit(int c);
@@ -87,5 +88,6 @@ int			ft_display_u_int(pfstruct *type, pfconv c_conv, va_list iter);
 void		padding(char c, pfstruct *type, long len);
 int			max(long a, long b);
 void		add_str_to_buff(pfstruct *pf, char *str);
+int			ft_mod(char c);
 
 #endif

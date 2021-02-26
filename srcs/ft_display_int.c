@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 14:40:30 by tnave             #+#    #+#             */
-/*   Updated: 2021/02/24 15:00:10 by tnave            ###   ########.fr       */
+/*   Updated: 2021/02/26 15:36:38 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,11 @@ int			pf_putnbr(pfstruct *type, long nb)
 
 void			padding(char c, pfstruct *type, long len)
 {
-	while (len-- > 0)
+	while (len > 0)
+	{
 		add_to_buff(type, c);
+		len--;
+	}
 }
 
 int				max(long a, long b)
@@ -67,6 +70,7 @@ int				ft_display_int(pfstruct *type, pfconv c_conv, va_list iter)
 	if (nb == 0 && c_conv.prec == 0)
 	{
 		padding(' ', type, c_conv.width - (max(len, c_conv.prec)));
+		add_to_buff(type, ' ');
 		return (0);
 	}
 	if (c_conv.prec >= 0 && c_conv.zero == 1)
@@ -85,6 +89,7 @@ int				ft_display_int(pfstruct *type, pfconv c_conv, va_list iter)
 	pf_putnbr(type, nb);
 	if (c_conv.dash == 1)
 		padding(' ', type, c_conv.width - (max(len, c_conv.prec)));
+
 	return (0);
 }
 

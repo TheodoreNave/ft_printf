@@ -12,7 +12,8 @@ SRCS_LIST		= \
                                         ft_display_ptr.c \
                                         ft_display_int.c \
                                         ft_display_hex.c \
-                                        ft_display_char.c
+                                        ft_display_char.c \
+                                        ft_display_modu.c
 
 SRCS			= $(addprefix ${FOLDER}/, ${SRCS_LIST})
 

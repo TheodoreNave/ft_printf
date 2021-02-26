@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 14:28:39 by tnave             #+#    #+#             */
-/*   Updated: 2021/02/24 15:13:50 by tnave            ###   ########.fr       */
+/*   Updated: 2021/02/26 15:46:09 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,10 +103,11 @@ int		ft_printf(const char *str, ...)
 			add_to_buff(&pf, str[pf.i]);
 		if (str[pf.i] == '%')
 		{
+			
 				pf.i++;
-				if (!ft_type(pf.i))
+				if (!ft_type(str[pf.i]))
 					pf.j = pf.i;
-				while (!check_type(str[pf.i]))
+				while (!ft_type(str[pf.i]))
 					pf.i++;				
 				pf.type = str[pf.i];
 				ft_parse(ft_reset(&c_conv), &str[pf.j], iter);
@@ -122,9 +123,12 @@ int		ft_printf(const char *str, ...)
 				 ft_display_str(&pf, c_conv, iter);
 				if (is_char(pf.type))
 					ft_display_char(&pf, c_conv, iter);
+				if (ft_mod(pf.type))
+					ft_display_modu(&pf, c_conv);
 		}
 		pf.i++;
 	}
+
 	empty_buff(&pf);
 	va_end(iter);
 	return (0);												
@@ -132,14 +136,14 @@ int		ft_printf(const char *str, ...)
 
 // int main(void)
 // {
-// 	// pfconv	c_conv;
 	
 // 	printf("\n");
-// 	printf("OG PRINTF = %*d", 34, 2);							// width > prec
+// 	printf("OG PRINTF = %.d", 0);							// width > prec
 // 	printf("\n");											// width < prec
-// 	ft_printf("DA PRINTF = %*d", 34, 2);
-// 														// If width is - cancel the prec
-// 														// If there is a number just after the %, check directly the flag
+// 	ft_printf("DA PRINTF = %.d", 0);
+// }
+// // 														// If width is - cancel the prec
+														// If there is a number just after the %, check directly the flag
 // // // 	// printf("[%d]\n", c_conv.width);
 // // // 	// printf("[%d]\n", c_conv.dot);
 // // // 	// printf("[%d]\n", c_conv.prec);
