@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 14:28:39 by tnave             #+#    #+#             */
-/*   Updated: 2021/02/27 14:47:11 by tnave            ###   ########.fr       */
+/*   Updated: 2021/02/27 17:34:11 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_pfconv	*ft_parse(t_pfconv *c_conv, const char *str, va_list iter)
 			i++;
 		}
 		else
-			c_conv->width = atoi(&str[i]);
+			c_conv->width = atoi(&str[i]);				// ADD FT_ATOI
 	}
 	while (ft_isdigit(str[i]))
 		i++;
@@ -64,7 +64,7 @@ t_pfconv	*ft_parse(t_pfconv *c_conv, const char *str, va_list iter)
 				i++;
 			}
 			else 
-				c_conv->prec = atoi(&str[i]);
+				c_conv->prec = atoi(&str[i]);			// ADD FT_ATOI
 		}
 	}
 	return (c_conv);
@@ -72,7 +72,6 @@ t_pfconv	*ft_parse(t_pfconv *c_conv, const char *str, va_list iter)
 
 int		ft_printf(const char *str, ...)
 {
-
 	t_pfstruct pf;
 	ft_memset(&pf, 0, sizeof(pf));
 	va_list iter;
@@ -87,45 +86,43 @@ int		ft_printf(const char *str, ...)
 			add_to_buff(&pf, str[pf.i]);
 		if (str[pf.i] == '%')
 		{
-			
-				pf.i++;
-				if (!ft_type(str[pf.i]))
-					pf.j = pf.i;
-				while (!ft_type(str[pf.i]))
-					pf.i++;				
-				pf.type = str[pf.i];
-				ft_parse(ft_reset(&c_conv), &str[pf.j], iter);
-				if (is_int(pf.type))
-					ft_display_int(&pf, c_conv, iter);
-				if (is_u_int(pf.type))
-					ft_display_u_int(&pf, c_conv, iter);
-				if (is_hex(pf.type))
-					ft_display_hex(&pf, c_conv, iter);
-				if (is_ptr(pf.type))
-					ft_display_ptr(&pf, c_conv, iter);
-				if (is_str(pf.type))
-				 	ft_display_str(&pf, c_conv, iter);
-				if (is_char(pf.type))
-					ft_display_char(&pf, c_conv, iter);
-				if (is_mod(pf.type))
-					ft_display_mod(&pf, c_conv);
+			pf.i++;
+			if (!ft_type(str[pf.i]))
+				pf.j = pf.i;
+			while (!ft_type(str[pf.i]))
+				pf.i++;				
+			pf.type = str[pf.i];
+			ft_parse(ft_reset(&c_conv), &str[pf.j], iter);
+			if (is_int(pf.type))
+				ft_display_int(&pf, c_conv, iter);
+			if (is_u_int(pf.type))
+				ft_display_u_int(&pf, c_conv, iter);
+			if (is_hex(pf.type))
+				ft_display_hex(&pf, c_conv, iter);
+			if (is_ptr(pf.type))
+				ft_display_ptr(&pf, c_conv, iter);
+			if (is_str(pf.type))
+				ft_display_str(&pf, c_conv, iter);
+			if (is_char(pf.type))
+				ft_display_char(&pf, c_conv, iter);
+			if (is_mod(pf.type))
+				ft_display_mod(&pf, c_conv);
 		}
 		pf.i++;
 	}
-
 	empty_buff(&pf);
 	va_end(iter);
 	return (0);												
 }
 
-// int main(void)
-// {
+int main(void)
+{
 	
-// 	printf("\n");
-// 	printf("OG PRINTF = %.d", 0);							// width > prec
-// 	printf("\n");											// width < prec
-// 	ft_printf("DA PRINTF = %.d", 0);
-// }
+	printf("\n");
+	printf("OG PRINTF = %03x", 0);							// width > prec
+	printf("\n");											// width < prec
+	ft_printf("DA PRINTF = %03x", 0);
+}
 // // 														// If width is - cancel the prec
 														// If there is a number just after the %, check directly the flag
 // // // 	// printf("[%d]\n", c_conv.width);

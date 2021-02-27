@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 11:26:23 by tnave             #+#    #+#             */
-/*   Updated: 2021/02/27 14:46:30 by tnave            ###   ########.fr       */
+/*   Updated: 2021/02/27 16:09:28 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int			ft_max(long a, long b)
 	if (a > b)
 		return (a);
 	else
-		return (b);	
+		return (b);
 }
 
 void		*ft_memset(void *b, int c, size_t len)
@@ -73,4 +73,3 @@ size_t		ft_strlen(char *str)
 		i++;
 	return (i);
 }
-

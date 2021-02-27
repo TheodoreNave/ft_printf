@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 14:31:31 by tnave             #+#    #+#             */
-/*   Updated: 2021/02/27 14:45:38 by tnave            ###   ########.fr       */
+/*   Updated: 2021/02/27 17:33:53 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@
 # include <stdarg.h>
 # include <stdint.h>
 # include <limits.h>
+
+
+# include <stdlib.h>
+# include <stdio.h>
+
+
 # define BUFF_MAX 256
 
 typedef struct		s_pflist
@@ -51,6 +57,7 @@ void				empty_buff(t_pfstruct *pf);
 void				add_str_to_buff(t_pfstruct *pf, char *str);
 int					ft_count_nbr(long nb, long base);
 t_pfconv			*ft_parse(t_pfconv *c_conv, const char *str, va_list iter);
+int					ft_all_type(t_pfstruct *pf, t_pfconv c_conv, va_list iter);
 t_pfconv			*ft_reset(t_pfconv *c_conv);
 int					ft_type(char c);
 char				is_int(char c);

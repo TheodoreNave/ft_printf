@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 14:40:30 by tnave             #+#    #+#             */
-/*   Updated: 2021/02/27 14:46:55 by tnave            ###   ########.fr       */
+/*   Updated: 2021/02/27 15:35:09 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		ft_display_int(t_pfstruct *type, t_pfconv c_conv, va_list iter)
 	}
 	if (nb == 0 && c_conv.prec == 0)
 	{
-		padding(' ', type, c_conv.width - (max(len, c_conv.prec)));
+		ft_padding(' ', type, c_conv.width - (ft_max(len, c_conv.prec)));
 		add_to_buff(type, ' ');
 		return (0);
 	}
@@ -58,16 +58,16 @@ int		ft_display_int(t_pfstruct *type, t_pfconv c_conv, va_list iter)
 		c_conv.dash = 0;
 	}
 	if (c_conv.dash == 0 && c_conv.zero == 0)
-		padding(' ', type, c_conv.width - (max(len, c_conv.prec)));
+		ft_padding(' ', type, c_conv.width - (ft_max(len, c_conv.prec)));
 	if (neg)
 		add_to_buff(type, '-');
 	
-		padding('0', type, c_conv.prec - len);
+		ft_padding('0', type, c_conv.prec - len);
 	if (c_conv.zero == 1)
-		padding('0', type, c_conv.width - (max(len, c_conv.prec)));
+		ft_padding('0', type, c_conv.width - (ft_max(len, c_conv.prec)));
 	pf_putnbr(type, nb);
 	if (c_conv.dash == 1)
-		padding(' ', type, c_conv.width - (max(len, c_conv.prec)));
+		ft_padding(' ', type, c_conv.width - (ft_max(len, c_conv.prec)));
 
 	return (0);
 }
@@ -91,16 +91,16 @@ int				ft_display_u_int(t_pfstruct *type, t_pfconv c_conv, va_list iter)
 	// printf("prec = %d\n", c_conv.prec);
 	if (nb == 0 && c_conv.prec == 0)
 	{
-		padding(' ', type, c_conv.width - (max(len, c_conv.prec)));
+		ft_padding(' ', type, c_conv.width - (ft_max(len, c_conv.prec)));
 		return (0);
 	}
 	if (c_conv.dash == 0 && c_conv.zero == 0)
-		padding(' ', type, c_conv.width - (max(len, c_conv.prec)));
-	padding('0', type, c_conv.prec - len);
+		ft_padding(' ', type, c_conv.width - (ft_max(len, c_conv.prec)));
+	ft_padding('0', type, c_conv.prec - len);
 	if (c_conv.zero == 1)
-		padding('0', type, c_conv.width - (max(len, c_conv.prec)));
+		ft_padding('0', type, c_conv.width - (ft_max(len, c_conv.prec)));
 	pf_putnbr(type, nb);
 	if (c_conv.dash == 1)
-		padding(' ', type, c_conv.width - (max(len, c_conv.prec)));
+		ft_padding(' ', type, c_conv.width - (ft_max(len, c_conv.prec)));
 	return (0);
 }

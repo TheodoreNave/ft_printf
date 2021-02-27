@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 12:25:13 by tnave             #+#    #+#             */
-/*   Updated: 2021/02/27 14:47:03 by tnave            ###   ########.fr       */
+/*   Updated: 2021/02/27 16:07:41 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,28 @@ int		ft_display_hex(t_pfstruct *type, t_pfconv c_conv, va_list iter)
 	}
 	if (nb == 0 && c_conv.prec == 0)
 	{
-		padding(' ', type, c_conv.width - (max(len, c_conv.prec)));
+		ft_padding(' ', type, c_conv.width - (ft_max(len, c_conv.prec)));
 		return (0);
 	}
 	if (c_conv.dash == 0 && c_conv.zero == 0)
-		padding(' ', type, c_conv.width - (max(len, c_conv.prec)));
+		ft_padding(' ', type, c_conv.width - (ft_max(len, c_conv.prec)));
+	// if (c_conv.width > c_conv.prec)
+	// 	ft_padding(' ', type, c_conv.width - (ft_max(len, c_conv.prec)));
 	if (neg)
 		add_to_buff(type, '-');
-	padding('0', type, c_conv.prec - len);
+	ft_padding('0', type, c_conv.prec - len);
 	if (c_conv.zero == 1)
-		padding('0', type, c_conv.width - (max(len, c_conv.prec)));
+		ft_padding('0', type, c_conv.width - (ft_max(len, c_conv.prec)));
+	if (c_conv.zero == 1 && c_conv.width < c_conv.prec)
+	{
+		ft_padding('0', type, c_conv.width - (ft_max(len, c_conv.prec)));
+		return (0);
+	}
 	if (type->type == 'X')
 		ft_putnbr_base(nb, "0123456789ABCDEF", type);
 	if (type->type == 'x')
 		ft_putnbr_base(nb, "0123456789abcdef", type);
 	if (c_conv.dash == 1)
-		padding(' ', type, c_conv.width - (max(len, c_conv.prec)));
+		ft_padding(' ', type, c_conv.width - (ft_max(len, c_conv.prec)));
 	return (0);
 }
