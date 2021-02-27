@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_printf_utils3.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/08 14:59:26 by tnave             #+#    #+#             */
-/*   Updated: 2021/02/24 13:27:32 by tnave            ###   ########.fr       */
+/*   Created: 2021/02/27 14:15:03 by tnave             #+#    #+#             */
+/*   Updated: 2021/02/27 14:46:03 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	ft_putchar(char c)
+void	ft_putnbr_base(long nb, char *base, t_pfstruct *pf)
 {
-	write(1, &c, 1);
+	if (nb >= (long)ft_strlen(base))
+	{
+		ft_putnbr_base(nb / ft_strlen(base), base, pf);
+		ft_putnbr_base(nb % ft_strlen(base), base, pf);
+	}
+	else
+		add_to_buff(pf, base[nb]);
 }
+
+// Function Shortcut here

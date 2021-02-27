@@ -2,18 +2,15 @@ NAME			= libftprintf.a
 
 SRCS_LIST		= \
 					ft_printf.c \
-					ft_strrev.c \
-                                        ft_putchar.c \
-                                        ft_putstr.c \
-                                        ft_strlen.c \
-					ft_printf_utils.c \
-                                        ft_itoa_base.c \
-                                        ft_display_str.c \
-                                        ft_display_ptr.c \
-                                        ft_display_int.c \
+					ft_display_int.c \
                                         ft_display_hex.c \
+                                        ft_display_ptr.c \
+                                        ft_display_str.c \
                                         ft_display_char.c \
-                                        ft_display_modu.c
+                                        ft_display_mod.c \
+					ft_printf_utils.c \
+                                        ft_printf_utils2.c \
+                                        ft_printf_utils3.c
 
 SRCS			= $(addprefix ${FOLDER}/, ${SRCS_LIST})
 

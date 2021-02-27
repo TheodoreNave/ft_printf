@@ -6,44 +6,23 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 14:40:30 by tnave             #+#    #+#             */
-/*   Updated: 2021/02/26 15:36:38 by tnave            ###   ########.fr       */
+/*   Updated: 2021/02/27 14:46:55 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int			pf_putnbr(pfstruct *type, long nb)
+char	is_int(char c)
 {
-	if (nb < 0)
-	{
-		add_to_buff(type, '-');
-		nb *= -1;
-	}
-	if (nb >= 10)
-		pf_putnbr(type, nb / 10);
-	add_to_buff(type, nb % 10 + '0');
-	return (0);
+	return (c == 'd' || c == 'i');
 }
 
-void			padding(char c, pfstruct *type, long len)
+char	is_u_int(char c)
 {
-	while (len > 0)
-	{
-		add_to_buff(type, c);
-		len--;
-	}
+	return (c == 'u');
 }
 
-int				max(long a, long b)
-{
-	if (a > b)
-		return (a);
-	else
-		return (b);
-	
-}
-
-int				ft_display_int(pfstruct *type, pfconv c_conv, va_list iter)
+int		ft_display_int(t_pfstruct *type, t_pfconv c_conv, va_list iter)
 {
 	int		nb;
 	int 	len;
@@ -93,7 +72,7 @@ int				ft_display_int(pfstruct *type, pfconv c_conv, va_list iter)
 	return (0);
 }
 
-int				ft_display_u_int(pfstruct *type, pfconv c_conv, va_list iter)
+int				ft_display_u_int(t_pfstruct *type, t_pfconv c_conv, va_list iter)
 {
 	unsigned int		nb;
 	long				len;

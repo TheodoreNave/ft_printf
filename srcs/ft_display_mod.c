@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_display_modu.c                                  :+:      :+:    :+:   */
+/*   ft_display_mod.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/26 14:24:28 by tnave             #+#    #+#             */
-/*   Updated: 2021/02/26 15:45:56 by tnave            ###   ########.fr       */
+/*   Created: 2021/02/27 14:16:00 by tnave             #+#    #+#             */
+/*   Updated: 2021/02/27 14:46:45 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int		ft_display_modu(pfstruct *type, pfconv c_conv)
+int		is_mod(char c)
+{
+	return (c == '%');
+}
+
+int		ft_display_mod(t_pfstruct *type, t_pfconv c_conv)
 {
 	char c;
 	int i;

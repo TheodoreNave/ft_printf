@@ -6,41 +6,26 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 14:28:39 by tnave             #+#    #+#             */
-/*   Updated: 2021/02/26 15:46:09 by tnave            ###   ########.fr       */
+/*   Updated: 2021/02/27 14:47:11 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-
-void	add_to_buff(pfstruct *pf, char c)
+int		ft_type(char c)
 {
-	pf->buf[pf->x] = c;
-	pf->x++;
-	if (pf->x == BUFF_MAX)
-		empty_buff(pf);
+	return (c == 'c' || c == '%' || c == 'd' || c == 'u' 
+	|| c == 'i' || c == 's' || c == 'x' || c == 'X' || c == 'p' || c == '\0');
 }
 
-pfconv	*ft_reset(pfconv *c_conv)
+int		ft_isdigit(int c)
 {
-	c_conv->width = 0;	// Largeur after 0 or -
-	c_conv->prec = -1;	// Nb prec
-	c_conv->dot = 0; 	// 
-	c_conv->conv = 0; 	// 
-	c_conv->zero = 0;	// 0 or not
-	c_conv->dash = 0;	// Dash or not
-	return (c_conv);
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }
 
-
-void	empty_buff(pfstruct *pf)
-{
-	write(1, &pf->buf, pf->x);
-	pf->x = 0;
-}
-
-
-pfconv	*ft_parse(pfconv *c_conv, const char *str, va_list iter)
+t_pfconv	*ft_parse(t_pfconv *c_conv, const char *str, va_list iter)
 {
 	int i;
 	
@@ -61,7 +46,6 @@ pfconv	*ft_parse(pfconv *c_conv, const char *str, va_list iter)
 		{
 			c_conv->width = va_arg(iter, int);
 			i++;
-			// write(1, "a\n", 2);
 		}
 		else
 			c_conv->width = atoi(&str[i]);
@@ -89,10 +73,10 @@ pfconv	*ft_parse(pfconv *c_conv, const char *str, va_list iter)
 int		ft_printf(const char *str, ...)
 {
 
-	pfstruct pf;
-	memset(&pf, 0, sizeof(pf));		// To ft_memset
+	t_pfstruct pf;
+	ft_memset(&pf, 0, sizeof(pf));
 	va_list iter;
-	pfconv c_conv;
+	t_pfconv c_conv;
 	va_start(iter, str);
 
 	if (!str)
@@ -120,11 +104,11 @@ int		ft_printf(const char *str, ...)
 				if (is_ptr(pf.type))
 					ft_display_ptr(&pf, c_conv, iter);
 				if (is_str(pf.type))
-				 ft_display_str(&pf, c_conv, iter);
+				 	ft_display_str(&pf, c_conv, iter);
 				if (is_char(pf.type))
 					ft_display_char(&pf, c_conv, iter);
-				if (ft_mod(pf.type))
-					ft_display_modu(&pf, c_conv);
+				if (is_mod(pf.type))
+					ft_display_mod(&pf, c_conv);
 		}
 		pf.i++;
 	}

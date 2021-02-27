@@ -6,11 +6,16 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 12:25:15 by tnave             #+#    #+#             */
-/*   Updated: 2021/02/24 13:27:02 by tnave            ###   ########.fr       */
+/*   Updated: 2021/02/27 13:56:00 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+
+char	is_ptr(char c)
+{
+	return (c == 'p');
+}
 
 int		ft_display_ptr(pfstruct *type, pfconv c_conv, va_list iter)
 {

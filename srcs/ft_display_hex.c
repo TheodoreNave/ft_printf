@@ -6,25 +6,18 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 12:25:13 by tnave             #+#    #+#             */
-/*   Updated: 2021/02/24 13:27:17 by tnave            ###   ########.fr       */
+/*   Updated: 2021/02/27 14:47:03 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	add_str_to_buff(pfstruct *pf, char *str)
+char 	is_hex(char c)
 {
-	int i;
-	
-	i = 0;
-	while (str[i])
-	{
-		add_to_buff(pf, str[i]);
-		i++;
-	}
+	return (c == 'x' || c == 'X');
 }
 
-int		ft_display_hex(pfstruct *type, pfconv c_conv, va_list iter)
+int		ft_display_hex(t_pfstruct *type, t_pfconv c_conv, va_list iter)
 {
 	uintmax_t		nb;
 	int				len;
@@ -35,14 +28,6 @@ int		ft_display_hex(pfstruct *type, pfconv c_conv, va_list iter)
 	len = ft_count_nbr(nb, 16);					//= 2
 	i = len;
 	neg = 0;
-	
-	// printf("\n");
-	// printf("len of nb = %d\n", i);
-	// printf("dot = %d\n", c_conv.dot);
-	// printf("zero = %d\n", c_conv.zero);
-	// printf("dash = %d\n", c_conv.dash);
-	// printf("width = %d\n", c_conv.width);
-	// printf("prec = %d\n", c_conv.prec);
 
 	if (nb < 0)
 	{

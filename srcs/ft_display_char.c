@@ -6,13 +6,18 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 14:35:11 by tnave             #+#    #+#             */
-/*   Updated: 2021/02/26 14:23:33 by tnave            ###   ########.fr       */
+/*   Updated: 2021/02/27 14:45:47 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int             ft_display_char(pfstruct *type, pfconv c_conv, va_list iter)
+char	is_char(char c)
+{
+	return (c == 'c');
+}
+
+int     ft_display_char(t_pfstruct *type, t_pfconv c_conv, va_list iter)
 {
         int c;
         int i;

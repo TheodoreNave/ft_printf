@@ -6,81 +6,71 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 11:26:23 by tnave             #+#    #+#             */
-/*   Updated: 2021/02/26 15:07:02 by tnave            ###   ########.fr       */
+/*   Updated: 2021/02/27 14:46:30 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-char	*ft_strlowcase(char *str)
+	// printf("\n");
+	// printf("len of nb = %d\n", i);
+	// printf("dot = %d\n", c_conv.dot);
+	// printf("zero = %d\n", c_conv.zero);
+	// printf("dash = %d\n", c_conv.dash);
+	// printf("width = %d\n", c_conv.width);
+	// printf("prec = %d\n", c_conv.prec);
+
+int			pf_putnbr(t_pfstruct *type, long nb)
+{
+	if (nb < 0)
+	{
+		add_to_buff(type, '-');
+		nb *= -1;
+	}
+	if (nb >= 10)
+		pf_putnbr(type, nb / 10);
+	add_to_buff(type, nb % 10 + '0');
+	return (0);
+}
+
+void		ft_padding(char c, t_pfstruct *type, long len)
+{
+	while (len > 0)
+	{
+		add_to_buff(type, c);
+		len--;
+	}
+}
+
+int			ft_max(long a, long b)
+{
+	if (a > b)
+		return (a);
+	else
+		return (b);	
+}
+
+void		*ft_memset(void *b, int c, size_t len)
+{
+	unsigned char	*pb;
+
+	pb = b;
+	while (len > 0)
+	{
+		*pb = c;
+		pb++;
+		len--;
+	}
+	return (b);
+}
+
+size_t		ft_strlen(char *str)
 {
 	int i;
 
 	i = 0;
 	while (str[i])
-	{
-		if (str[i] >= 'A' && str[i] <= 'Z')
-			str[i] += 32;
 		i++;
-	}
-	return (str);
+	return (i);
 }
 
-char	is_int(char c)
-{
-	return (c == 'd' || c == 'i');
-}
-
-char	is_u_int(char c)
-{
-	return (c == 'u');
-}
-
-char	is_ptr(char c)
-{
-	return (c == 'p');
-}
-
-char 	is_hex(char c)
-{
-	return (c == 'x' || c == 'X');
-}
-
-char	is_str(char c)
-{
-	return (c == 's');
-}
-
-char	is_char(char c)
-{
-	return (c == 'c');
-}
-
-char	is_width(char c)
-{
-	return (c == '-');
-}
-
-char	is_prec(char c)
-{
-	return (c == '.');
-}
-
-int		ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
-
-int		ft_type(char c)
-{
-	if (c == 'c' || c == '%' || c == 'd' || c == 'u' || c == 'i' || c == 's' || c == 'x' || c == 'X' || c == 'p' || c == '\0')
-		return (1);
-	return (0);
-}
-
-int		ft_mod(char c)
-{
-	return (c == '%');
-}

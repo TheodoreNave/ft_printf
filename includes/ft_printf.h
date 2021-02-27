@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 14:31:31 by tnave             #+#    #+#             */
-/*   Updated: 2021/02/26 15:48:32 by tnave            ###   ########.fr       */
+/*   Updated: 2021/02/27 14:45:38 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,80 +14,69 @@
 # define FT_PRINTF_H
 
 # include <unistd.h>
-# include <strings.h>
-# include <stdlib.h>
 # include <string.h>
-# include <stdio.h>
 # include <stdarg.h>
 # include <stdint.h>
 # include <limits.h>
-# include <libc.h>
-# define BUFF_MAX 12
+# define BUFF_MAX 256
 
-typedef struct      d_list
+typedef struct		s_pflist
 {
-	int 	i;
-	int		j;
+	int 	i;					// Simple iterator
+	int		j;					// Keep for flags
 	int		x;					// Total_len
-	char 	y;
-	char	stock;
-	char 	*arg;
-	char	type;
-	char	buf[BUFF_MAX];
+	char 	y;					// ?
+	char	stock;				// ?
+	char 	*arg;				// ?
+	char	type;				// Keep for type (d / s...)
+	char	buf[BUFF_MAX];		// Buffer
 
-} 					pfstruct; 
+}					t_pfstruct;
 
-typedef struct		s_list
+typedef struct		s_fllist
 {
-	int width;	//number after width -> -45
-	int prec;	// Check 0 puis -1 en valeur
-	int	dot; 	// .
-	int	conv; 	// type
-	//int star; 	// *
-	int zero;	// 0
-	int dash;	// -
+	int width;	// Largeur after 0 or -
+	int prec;	// Nb prec (start at - 1)
+	int	dot; 	// if there a dot
+	int	conv; 	// type ??? Useful really ?
+	int zero;	// 0 or not
+	int dash;	// Dash or not
 
-}					pfconv;
+}					t_pfconv;
 
-void		ft_putchar(char c);										// PUTCHAR
-int			pf_putnbr(pfstruct *type, long nb);
-int			ft_display_int(pfstruct *type, pfconv c_conv, va_list iter);			// DISPLAY INTEGER
-int			ft_printf(const char *str, ...);						// MAIN_FUNCTION
-int			fonction_type(pfstruct *type, char c);								
-void		ft_putnbr_base(long nb, char *base, pfstruct *pf);
-void		ft_putstr(char *str);									// PUTSTR
-size_t		ft_strlen(char *str);									// LEN
-char		*ft_strrev(char *str);									// REV FOR ITOA
-void		add_to_buff(pfstruct *pf, char c);						// ADDED FOR BUFFER
-void		empty_buff(pfstruct *pf);								// EMPTY THE BUFFER
-pfconv		init_conv(char *str, char conv);
-//int		ft_atoi(char *str);
-int			ft_count_nbr(long nb, long base);							// COUNT NBR ITOA
-char		*ft_strlowcase(char *str);
-char		is_int(char c);
-char		is_ptr(char c);
-char 		is_hex(char c);
-char		is_str(char c);
-char		is_char(char c);
-int			ft_display_hex(pfstruct *type, pfconv c_conv, va_list iter);
-int			ft_display_ptr(pfstruct *type, pfconv c_conv, va_list iter);
-int     	ft_display_str(pfstruct *type, pfconv c_conv, va_list iter);
-int     	ft_display_char(pfstruct *type, pfconv c_conv, va_list iter);
-int			ft_display_modu(pfstruct *type, pfconv c_conv);
-int			ft_display_unsigned_int(pfstruct *type, pfconv c_conv, va_list iter);
-char		is_u_int(char c);
-int			ft_isdigit(int c);
-pfconv		*ft_parse(pfconv *c_conv, const char *str, va_list iter);
-char		is_width(char c);
-char		is_prec(char c);
-int 		ft_display_width_d(pfstruct *type, pfconv c_conv, va_list iter);
-int			check_type(char c);
-int			ft_display_int_width(pfstruct *type, pfconv c_conv, int j);
-int			ft_type(char c);
-int			ft_display_u_int(pfstruct *type, pfconv c_conv, va_list iter);
-void		padding(char c, pfstruct *type, long len);
-int			max(long a, long b);
-void		add_str_to_buff(pfstruct *pf, char *str);
-int			ft_mod(char c);
-
+int					ft_printf(const char *str, ...);
+void				*ft_memset(void *b, int c, size_t len);
+void				add_to_buff(t_pfstruct *pf, char c);
+void				empty_buff(t_pfstruct *pf);
+void				add_str_to_buff(t_pfstruct *pf, char *str);
+int					ft_count_nbr(long nb, long base);
+t_pfconv			*ft_parse(t_pfconv *c_conv, const char *str, va_list iter);
+t_pfconv			*ft_reset(t_pfconv *c_conv);
+int					ft_type(char c);
+char				is_int(char c);
+char				is_u_int(char c);
+char				is_hex(char c);
+char				is_ptr(char c);
+char				is_str(char c);
+char				is_char(char c);
+int					is_mod(char c);
+int					ft_isdigit(int c);
+int					ft_display_int(t_pfstruct *type, t_pfconv c_conv,
+					va_list iter);
+int					ft_display_u_int(t_pfstruct *type, t_pfconv c_conv,
+					va_list iter);
+int					ft_display_hex(t_pfstruct *type, t_pfconv c_conv,
+					va_list iter);
+int					ft_display_ptr(t_pfstruct *type, t_pfconv c_conv,
+					va_list iter);
+int					ft_display_str(t_pfstruct *type, t_pfconv c_conv,
+					va_list iter);
+int					ft_display_char(t_pfstruct *type, t_pfconv c_conv,
+					va_list iter);
+int					ft_display_mod(t_pfstruct *type, t_pfconv c_conv);
+void				ft_putnbr_base(long nb, char *base, t_pfstruct *pf);
+int					pf_putnbr(t_pfstruct *type, long nb);
+void				ft_padding(char c, t_pfstruct *type, long len);
+int					ft_max(long a, long b);
+size_t				ft_strlen(char *str);
 #endif
