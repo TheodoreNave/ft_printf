@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 14:31:31 by tnave             #+#    #+#             */
-/*   Updated: 2021/02/27 17:33:53 by tnave            ###   ########.fr       */
+/*   Updated: 2021/02/28 13:01:44 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,5 @@ int					pf_putnbr(t_pfstruct *type, long nb);
 void				ft_padding(char c, t_pfstruct *type, long len);
 int					ft_max(long a, long b);
 size_t				ft_strlen(char *str);
+int					ft_atoi(char *str);
 #endif

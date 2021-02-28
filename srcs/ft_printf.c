@@ -6,11 +6,13 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 14:28:39 by tnave             #+#    #+#             */
-/*   Updated: 2021/02/27 17:34:11 by tnave            ###   ########.fr       */
+/*   Updated: 2021/02/28 15:00:23 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+
+// Need shortcut for parse and printf functions and each display (Normally)
 
 int		ft_type(char c)
 {
@@ -115,15 +117,16 @@ int		ft_printf(const char *str, ...)
 	return (0);												
 }
 
-int main(void)
-{
-	
-	printf("\n");
-	printf("OG PRINTF = %03x", 0);							// width > prec
-	printf("\n");											// width < prec
-	ft_printf("DA PRINTF = %03x", 0);
-}
-// // 														// If width is - cancel the prec
+// int main(void)
+// {
+// 	char *str = "Salut";
+
+// 	printf("\n");
+// 	printf("OG PRINTF = %-49s", str);							// width > prec
+// 	printf("\n");											// width < prec
+// 	ft_printf("DA PRINTF = %-49s", str);
+// }
+// 														// If width is - cancel the prec
 														// If there is a number just after the %, check directly the flag
 // // // 	// printf("[%d]\n", c_conv.width);
 // // // 	// printf("[%d]\n", c_conv.dot);
