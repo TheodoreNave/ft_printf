@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 14:40:30 by tnave             #+#    #+#             */
-/*   Updated: 2021/02/28 13:31:52 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/01 16:04:37 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int		ft_display_int(t_pfstruct *type, t_pfconv c_conv, va_list iter)
 	if (neg)
 		add_to_buff(type, '-');
 	ft_padding('0', type, c_conv.prec - len);
-	if (c_conv.zero == 1)
+	if (c_conv.zero == 1 && c_conv.dot == 0)
 		ft_padding('0', type, c_conv.width - (ft_max(len, c_conv.prec)));
 	pf_putnbr(type, nb);
 	if (c_conv.dash == 1)

@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 11:26:23 by tnave             #+#    #+#             */
-/*   Updated: 2021/02/28 12:50:01 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/01 12:12:55 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,17 @@
 	// printf("dash = %d\n", c_conv.dash);
 	// printf("width = %d\n", c_conv.width);
 	// printf("prec = %d\n", c_conv.prec);
+
+size_t		ft_strlen(char *str)
+{
+	size_t i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
 
 int			pf_putnbr(t_pfstruct *type, long nb)
 {
@@ -62,14 +73,4 @@ void		*ft_memset(void *b, int c, size_t len)
 		len--;
 	}
 	return (b);
-}
-
-size_t		ft_strlen(char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
 }

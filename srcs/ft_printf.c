@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 14:28:39 by tnave             #+#    #+#             */
-/*   Updated: 2021/02/28 15:00:23 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/01 16:06:55 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int		ft_printf(const char *str, ...)
 	va_start(iter, str);
 
 	if (!str)
-		return (0);
+		return (c_conv.width);
 	while (str[pf.i])					
 	{									
 		if (str[pf.i] != '%')			  
@@ -89,8 +89,7 @@ int		ft_printf(const char *str, ...)
 		if (str[pf.i] == '%')
 		{
 			pf.i++;
-			if (!ft_type(str[pf.i]))
-				pf.j = pf.i;
+			pf.j = pf.i;
 			while (!ft_type(str[pf.i]))
 				pf.i++;				
 			pf.type = str[pf.i];
@@ -114,7 +113,7 @@ int		ft_printf(const char *str, ...)
 	}
 	empty_buff(&pf);
 	va_end(iter);
-	return (0);												
+	return (0);										
 }
 
 // int main(void)
@@ -122,87 +121,7 @@ int		ft_printf(const char *str, ...)
 // 	char *str = "Salut";
 
 // 	printf("\n");
-// 	printf("OG PRINTF = %-49s", str);							// width > prec
+// 	printf("OG = %07d", -54);							// width > prec
 // 	printf("\n");											// width < prec
-// 	ft_printf("DA PRINTF = %-49s", str);
+// 	ft_printf("DA = %07d", -54);
 // }
-// 														// If width is - cancel the prec
-														// If there is a number just after the %, check directly the flag
-// // // 	// printf("[%d]\n", c_conv.width);
-// // // 	// printf("[%d]\n", c_conv.dot);
-// // // 	// printf("[%d]\n", c_conv.prec);
-// // // 	// printf("[%d]\n", c_conv.dash);
-// // // 	// printf("\n");
-// // // 	// printf("======MON_PRINTF_PTR=====\n");
-// // // 	// ft_printf("%p", &p);
-// // // 	// printf("\n");
-// // // 	// printf("======OG_PRINTF_PTR=====\n");
-// // //  	// printf("%p", &p);
-// // //  	// printf("\n");
-
-	 
-// // // 	// printf("======MON_PRINTF_CHAR=====\n");
-// // // 	// ft_printf("%c", c);
-// // // 	// printf("\n");
-// // // 	// printf("======OG_PRINTF_CHAR=====\n");
-// // //  	// printf("%c", c);
-// // //  	// printf("\n");
-
-
-// // // 	// printf("======MON_PRINTF_INT_D=====\n");
-// // // 	// ft_printf("%d", d);
-// // // 	// printf("\n");
-// // // 	// printf("======OG_PRINTF_INT_D=====\n");
-// // //  	// printf("%d", d);
-// // //  	// printf("\n");
-
-	 
-// // // 	// printf("======MON_PRINTF_INT_I=====\n");
-// // // 	// ft_printf("%i", d);
-// // // 	// printf("\n");
-// // // 	// printf("======OG_PRINTF_INT_I=====\n");
-// // //  	// printf("%i", d);
-// // //  	// printf("\n");
-
-	 
-// // // 	// printf("======MON_PRINTF_U_INT=====\n");					// NOT WORKING
-// // // 	// ft_printf("%u", d);
-// // // 	// printf("\n");
-// // // 	// printf("======OG_PRINTF_U_INT=====\n");
-// // //  	// printf("%u", d);
-// // //  	// printf("\n");
-
-	 
-// // // 	// printf("======MON_PRINTF_HEX=====\n");						// NOT WORKING
-// // // 	// ft_printf("%x", d);
-// // // 	// printf("\n");
-// // // 	// printf("======OG_PRINTF_HEX=====\n");
-// // //  	// printf("%x", d);
-// // //  	// printf("\n");
-
-	 
-// // // 	// printf("======MON_PRINTF_HEX_MAJ=====\n");					// NOT WORKING
-// // // 	// ft_printf("%X", d);
-// // // 	// printf("\n");
-// // // 	// printf("======OG_PRINTF_HEX_MAJ=====\n");
-// // //  	// printf("%X", d);
-// // //  	// printf("\n");
-// }
-
-
-
-
-// // /* ========================================================
-// // Fu****g flags
-
-// // */
-
-// // /* ========================================================
-// // Ptr still an Error with adresses 
-
-// // */
-
-// // /* ========================================================
-// // J'avance jusqu'au % sinon j'ecris la string du printf
-
-// // */
