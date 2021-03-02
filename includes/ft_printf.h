@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 14:31:31 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/01 12:54:36 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/02 13:48:21 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,3 +88,6 @@ int					ft_max(long a, long b);
 size_t				ft_strlen(char *str);
 int					ft_atoi(char *str);
 #endif
+
+
+// si dash == 1 si width > 0 et si prec == 0 et si nb == 0 retourner width

@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 14:35:01 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/01 15:52:39 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/02 12:16:54 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,12 @@ int		ft_display_str(t_pfstruct *type, t_pfconv c_conv, va_list iter)
 	// MISSING NORMAL STRING && STRING EMPTY && ADD STUFF AT THE END OF THE STRING && REVERSE PRINTF WHEN NO DASH
 
 	// printf("salut\n");
+
+	if (c_conv.dot == 1 && c_conv.prec >= 0 && c_conv.prec < len)
+		len = c_conv.prec;
+
+	if (c_conv.dot == 1 && c_conv.prec < 0)
+		c_conv.dot = 0;
 
 	if (c_conv.zero == 0 && c_conv.dash == 0 && c_conv.width <= 0 && c_conv.dot == 0 && c_conv.prec == -1)
 	{

@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 14:28:39 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/01 16:06:55 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/02 14:19:18 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ t_pfconv	*ft_parse(t_pfconv *c_conv, const char *str, va_list iter)
 	if (str[i] == '.')
 	{
 		c_conv->dot = 1;
+		c_conv->prec = 0;
 		i++;
 		if (ft_isdigit(str[i]) || str[i] == '*')
 		{
@@ -121,7 +122,10 @@ int		ft_printf(const char *str, ...)
 // 	char *str = "Salut";
 
 // 	printf("\n");
-// 	printf("OG = %07d", -54);							// width > prec
+// 	printf("OG = %08.5x", 0);	
 // 	printf("\n");											// width < prec
-// 	ft_printf("DA = %07d", -54);
+// 	ft_printf("DA = %08.5x", 0);	
+// 	// printf("OG = %.0s", "theo");
+// 	// printf("OG = %.s", "theo");							// width > prec
+// 	// ft_printf("DA = %.0d", 0);
 // }
