@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 11:26:23 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/02 13:54:14 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/02 14:52:18 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,17 @@ size_t		ft_strlen(char *str)
 
 int			pf_putnbr(t_pfstruct *type, long nb)
 {
-	if (nb < 0)
+	// if (nb >= INT_MAX)
+	// {
+	// 	add_str_to_buff(type, "2147483647");
+	// 	return (0);
+	// }
+	// if (nb <= INT_MIN)
+	// {
+	// 	add_str_to_buff(type, "-2147483648");
+	// 	return (0);
+	// }
+	if (nb < 0 && nb != INT_MIN)
 	{
 		add_to_buff(type, '-');
 		nb *= -1;

@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 14:40:30 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/02 12:18:08 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/02 15:22:54 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,27 @@ int		ft_display_int(t_pfstruct *type, t_pfconv c_conv, va_list iter)
 	int		neg;
 	
 	nb = va_arg(iter, int);
-	len = ft_count_nbr(nb, 10);					//= 2
+	len = ft_count_nbr(nb, 10);
 	i = len;
 	neg = 0;
 
+	if (nb <= INT_MIN)
+	{
+			add_str_to_buff(type, "-2147483648");
+			return (0);
+	}
+	if (nb >= INT_MAX)
+	{
+			add_str_to_buff(type, "2147483647");
+			return (0);
+	}
 	if (nb < 0)
 	{
 		nb = -nb;
 		neg = 1;
 		c_conv.prec++;
 	}
+	
 	if (nb == 0 && c_conv.dot == 1 && c_conv.prec == 0 && c_conv.width == 0)
 	{
 		return (0);
@@ -65,7 +76,7 @@ int		ft_display_int(t_pfstruct *type, t_pfconv c_conv, va_list iter)
 	}
 	if (c_conv.dash == 0 && c_conv.zero == 0)
 		ft_padding(' ', type, c_conv.width - (ft_max(len, c_conv.prec)));
-	if (neg)
+	if (neg && ((nb != INT_MIN || nb != INT_MAX)))
 		add_to_buff(type, '-');
 	ft_padding('0', type, c_conv.prec - len);
 	if (c_conv.zero == 1 && c_conv.dot == 0)

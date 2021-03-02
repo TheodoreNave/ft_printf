@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 14:35:01 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/02 12:16:54 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/02 15:40:08 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,18 @@ int		ft_display_str(t_pfstruct *type, t_pfconv c_conv, va_list iter)
 	if (c_conv.dot == 1 && c_conv.prec >= 0 && c_conv.prec < len)
 		len = c_conv.prec;
 
-	if (c_conv.dot == 1 && c_conv.prec < 0)
+	if (c_conv.dot == 1 && c_conv.prec < 0 && c_conv.width < 0)
 		c_conv.dot = 0;
-
+	// if (c_conv.dot == 0 && c_conv.zero == 0 && c_conv.prec == -1 && c_conv.width < 0)
+	// {
+	// 	// ft_padding(' ', type, c_conv.width - len);
+	// 	c_conv.width *= - 1;
+	// 	// printf("len of i = %d\n", len);
+	// 	// printf("width = %d\n", c_conv.width);
+	// 	add_str_to_buff(type, str);	
+	// 	ft_padding(' ', type, c_conv.width - len);
+	// 	return (0);
+	// }
 	if (c_conv.zero == 0 && c_conv.dash == 0 && c_conv.width <= 0 && c_conv.dot == 0 && c_conv.prec == -1)
 	{
 		// printf("up");
@@ -78,6 +87,13 @@ int		ft_display_str(t_pfstruct *type, t_pfconv c_conv, va_list iter)
 	if (c_conv.dash == 0 && c_conv.width > 0 && c_conv.dot == 0 && c_conv.prec == -1)		// IMPORTANT
 	{
 		// printf("up");
+		ft_padding(' ', type, c_conv.width - len);
+		add_str_to_buff(type, str);
+		return (0);
+	}
+	if (c_conv.dash == 0 && c_conv.width < 0 && c_conv.dot == 0 && c_conv.prec == -1)		// IMPORTANT working on this one
+	{
+		// printf("down");
 		ft_padding(' ', type, c_conv.width - len);
 		add_str_to_buff(type, str);
 		return (0);
