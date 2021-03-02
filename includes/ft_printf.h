@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 14:31:31 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/02 13:48:21 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/02 22:33:32 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,23 @@ typedef struct		s_pflist
 	int 	i;					// Simple iterator
 	int		j;					// Keep for flags
 	int		x;					// Total_len
-	char 	y;					// ?
-	char	stock;				// ?
-	char 	*arg;				// ?
+	// char 	y;					// ?
+	// char	stock;				// ?
+	// char 	*arg;				// ?
 	char	type;				// Keep for type (d / s...)
-	char	buf[BUFF_MAX];		// Buffer
+	char	buff[BUFF_MAX];		// Buffer
+	int		buff_len;
 
 }					t_pfstruct;
 
 typedef struct		s_fllist
 {
-	int width;	// Largeur after 0 or -
-	int prec;	// Nb prec (start at - 1)
-	int	dot; 	// if there a dot
-	int	conv; 	// type ??? Useful really ?
 	int zero;	// 0 or not
 	int dash;	// Dash or not
-
+	int width;	// Largeur after 0 or -
+	int nb_width;
+	int	dot; 	// if there a dot
+	int dot_prec;	// Nb prec (start at - 1)
 }					t_pfconv;
 
 int					ft_printf(const char *str, ...);
@@ -56,7 +56,7 @@ void				add_to_buff(t_pfstruct *pf, char c);
 void				empty_buff(t_pfstruct *pf);
 void				add_str_to_buff(t_pfstruct *pf, char *str);
 int					ft_count_nbr(long nb, long base);
-t_pfconv			*ft_parse(t_pfconv *c_conv, const char *str, va_list iter);
+t_pfconv			*ft_parse(t_pfstruct *pf, t_pfconv *c_conv, const char *str, va_list iter);
 int					ft_all_type(t_pfstruct *pf, t_pfconv c_conv, va_list iter);
 t_pfconv			*ft_reset(t_pfconv *c_conv);
 int					ft_type(char c);
@@ -87,6 +87,10 @@ void				ft_padding(char c, t_pfstruct *type, long len);
 int					ft_max(long a, long b);
 size_t				ft_strlen(char *str);
 int					ft_atoi(char *str);
+void				ft_width(t_pfstruct *pf, t_pfconv *c_conv, const char *str, va_list iter);
+void				ft_dot(t_pfstruct *pf, t_pfconv *c_conv, const char *str, va_list iter);
+void 				ft_return_type(t_pfstruct *pf, t_pfconv *c_conv, va_list iter);
+
 #endif
 
 

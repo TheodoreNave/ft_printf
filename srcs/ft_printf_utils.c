@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 11:26:23 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/02 14:52:18 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/02 22:49:27 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ size_t		ft_strlen(char *str)
 		i++;
 	return (i);
 }
-
 
 int			pf_putnbr(t_pfstruct *type, long nb)
 {

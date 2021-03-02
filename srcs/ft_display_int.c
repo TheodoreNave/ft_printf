@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 14:40:30 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/02 15:22:54 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/02 20:22:08 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,42 +48,42 @@ int		ft_display_int(t_pfstruct *type, t_pfconv c_conv, va_list iter)
 	{
 		nb = -nb;
 		neg = 1;
-		c_conv.prec++;
+		c_conv.dot_prec++;
 	}
 	
-	if (nb == 0 && c_conv.dot == 1 && c_conv.prec == 0 && c_conv.width == 0)
+	if (nb == 0 && c_conv.dot == 1 && c_conv.dot_prec == 0 && c_conv.nb_width == 0)
 	{
 		return (0);
 	}
-	if (c_conv.dash == 0 && c_conv.width < 0 && c_conv.prec == -1 && c_conv.dot == 1 && nb == 0)
+	if (c_conv.dash == 0 && c_conv.nb_width < 0 && c_conv.dot_prec == -1 && c_conv.dot == 1 && nb == 0)
 	{
 		return (0);
 	}
-	if (c_conv.width > 0 && c_conv.dot == 1 && c_conv.prec == 0 && nb == 0)
+	if (c_conv.nb_width > 0 && c_conv.dot == 1 && c_conv.dot_prec == 0 && nb == 0)
 	{
-		ft_padding(' ', type, c_conv.width);
+		ft_padding(' ', type, c_conv.nb_width);
 		return (0);
 	}
-	if (c_conv.width > 0 && c_conv.dot == 1 && c_conv.prec == -1)
+	if (c_conv.nb_width > 0 && c_conv.dot == 1 && c_conv.dot_prec == -1)
 	{
-		ft_padding(' ', type, c_conv.width);
+		ft_padding(' ', type, c_conv.nb_width);
 		return (0);
 	}
-	if (c_conv.prec > 0 && c_conv.zero == 1)
+	if (c_conv.dot_prec > 0 && c_conv.zero == 1)
 	{
 		c_conv.zero = 0;
 		c_conv.dash = 0;
 	}
 	if (c_conv.dash == 0 && c_conv.zero == 0)
-		ft_padding(' ', type, c_conv.width - (ft_max(len, c_conv.prec)));
+		ft_padding(' ', type, c_conv.nb_width - (ft_max(len, c_conv.dot_prec)));
 	if (neg && ((nb != INT_MIN || nb != INT_MAX)))
 		add_to_buff(type, '-');
-	ft_padding('0', type, c_conv.prec - len);
+	ft_padding('0', type, c_conv.dot_prec - len);
 	if (c_conv.zero == 1 && c_conv.dot == 0)
-		ft_padding('0', type, c_conv.width - (ft_max(len, c_conv.prec)));
+		ft_padding('0', type, c_conv.nb_width - (ft_max(len, c_conv.dot_prec)));
 	pf_putnbr(type, nb);
 	if (c_conv.dash == 1)
-		ft_padding(' ', type, c_conv.width - (ft_max(len, c_conv.prec)));
+		ft_padding(' ', type, c_conv.nb_width - (ft_max(len, c_conv.dot_prec)));
 	return (0);
 }
 
@@ -99,54 +99,54 @@ int				ft_display_u_int(t_pfstruct *type, t_pfconv c_conv, va_list iter)
 	i = len;
 	neg = 0;
 
-	// if (nb == 0 && c_conv.prec == 0)
+	// if (nb == 0 && c_conv.dot_prec == 0)
 	// {
-	// 	ft_padding(' ', type, c_conv.width - (ft_max(len, c_conv.prec)));
+	// 	ft_padding(' ', type, c_conv.nb_width - (ft_max(len, c_conv.dot_prec)));
 	// 	return (0);
 	// }
 	// if (c_conv.dash == 0 && c_conv.zero == 0)
-	// 	ft_padding(' ', type, c_conv.width - (ft_max(len, c_conv.prec)));
-	// ft_padding('0', type, c_conv.prec - len);
+	// 	ft_padding(' ', type, c_conv.nb_width - (ft_max(len, c_conv.dot_prec)));
+	// ft_padding('0', type, c_conv.dot_prec - len);
 	// if (c_conv.zero == 1)
-	// 	ft_padding('0', type, c_conv.width - (ft_max(len, c_conv.prec)));
+	// 	ft_padding('0', type, c_conv.nb_width - (ft_max(len, c_conv.dot_prec)));
 	// pf_putnbr(type, nb);
 	// if (c_conv.dash == 1)
-	// 	ft_padding(' ', type, c_conv.width - (ft_max(len, c_conv.prec)));
+	// 	ft_padding(' ', type, c_conv.nb_width - (ft_max(len, c_conv.dot_prec)));
 	// return (0);
 
 
-	if (nb == 0 && c_conv.dot == 1 && c_conv.prec == 0 && c_conv.width == 0)
+	if (nb == 0 && c_conv.dot == 1 && c_conv.dot_prec == 0 && c_conv.nb_width == 0)
 	{
 		return (0);
 	}
-	if (c_conv.dash == 0 && c_conv.width < 0 && c_conv.prec == -1 && c_conv.dot == 1 && nb == 0)
+	if (c_conv.dash == 0 && c_conv.nb_width < 0 && c_conv.dot_prec == -1 && c_conv.dot == 1 && nb == 0)
 	{
 		return (0);
 	}
-	if (c_conv.width > 0 && c_conv.dot == 1 && c_conv.prec == 0 && nb == 0)
+	if (c_conv.nb_width > 0 && c_conv.dot == 1 && c_conv.dot_prec == 0 && nb == 0)
 	{
-		ft_padding(' ', type, c_conv.width);
+		ft_padding(' ', type, c_conv.nb_width);
 		return (0);
 	}
-	if (c_conv.width > 0 && c_conv.dot == 1 && c_conv.prec == -1)
+	if (c_conv.nb_width > 0 && c_conv.dot == 1 && c_conv.dot_prec == -1)
 	{
-		ft_padding(' ', type, c_conv.width);
+		ft_padding(' ', type, c_conv.nb_width);
 		return (0);
 	}
-	if (c_conv.prec > 0 && c_conv.zero == 1)
+	if (c_conv.dot_prec > 0 && c_conv.zero == 1)
 	{
 		c_conv.zero = 0;
 		c_conv.dash = 0;
 	}
 	if (c_conv.dash == 0 && c_conv.zero == 0)
-		ft_padding(' ', type, c_conv.width - (ft_max(len, c_conv.prec)));
+		ft_padding(' ', type, c_conv.nb_width - (ft_max(len, c_conv.dot_prec)));
 	if (neg)
 		add_to_buff(type, '-');
-	ft_padding('0', type, c_conv.prec - len);
+	ft_padding('0', type, c_conv.dot_prec - len);
 	if (c_conv.zero == 1 && c_conv.dot == 0)
-		ft_padding('0', type, c_conv.width - (ft_max(len, c_conv.prec)));
+		ft_padding('0', type, c_conv.nb_width - (ft_max(len, c_conv.dot_prec)));
 	pf_putnbr(type, nb);
 	if (c_conv.dash == 1)
-		ft_padding(' ', type, c_conv.width - (ft_max(len, c_conv.prec)));
+		ft_padding(' ', type, c_conv.nb_width - (ft_max(len, c_conv.dot_prec)));
 	return (0);
 }
