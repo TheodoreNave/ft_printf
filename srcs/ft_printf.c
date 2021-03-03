@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 14:28:39 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/03 15:14:07 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/03 15:48:53 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,11 @@ t_pfconv	*ft_parse(t_pfstruct *pf, t_pfconv *c_conv, const char *str)
 	}
 	return (c_conv);
 }
-
+/*
+**
+**	%5d, 42
+**	 ^
+*/
 int		ft_printf(const char *str, ...)
 {
 	t_pfstruct pf;
@@ -72,6 +76,13 @@ int		ft_printf(const char *str, ...)
 		{
 			pf.i++;
 			ft_parse(&pf, ft_reset(&c_conv), str);
+			if (c_conv.dot == 1 && c_conv.dot_prec < 0)
+				c_conv.dot = 0;
+			if (c_conv.nb_width < 0)
+			{
+				c_conv.dash = 1;
+				c_conv.nb_width = -c_conv.nb_width;
+			}
 			pf.type = str[pf.i];
 			ft_return_type(&pf, &c_conv);
 		}
@@ -86,6 +97,6 @@ int		ft_printf(const char *str, ...)
 // {
 // 	printf("\n");
 // 	// printf("OG = %.0s", "theo");
-// 	// printf("OG = %.s", "theo");							// width > prec
-// 	ft_printf("DA = %021s test", "theodore");
+// 	printf("OG = %-12.6d", -42);
+// 	ft_printf("DA = %-12.6d", -42);
 // }
