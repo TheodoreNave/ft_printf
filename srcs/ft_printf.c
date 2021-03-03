@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 14:28:39 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/03 16:00:07 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/03 16:03:36 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,7 @@ t_pfconv	*ft_parse(t_pfstruct *pf, t_pfconv *c_conv, const char *str)
 	}
 	return (c_conv);
 }
-/*
-**
-**	%5d, 42
-**	 ^
-*/
+
 int		ft_printf(const char *str, ...)
 {
 	t_pfstruct pf;
