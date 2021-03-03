@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 11:26:23 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/02 22:49:27 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/03 13:46:57 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ size_t		ft_strlen(char *str)
 	return (i);
 }
 
-int			pf_putnbr(t_pfstruct *type, long nb)
+int			pf_putnbr(t_pfstruct *pf, long nb)
 {
 	// if (nb >= INT_MAX)
 	// {
@@ -44,20 +44,20 @@ int			pf_putnbr(t_pfstruct *type, long nb)
 	// }
 	if (nb < 0 && nb != INT_MIN)
 	{
-		add_to_buff(type, '-');
+		add_to_buff(pf, '-');
 		nb *= -1;
 	}
 	if (nb >= 10)
-		pf_putnbr(type, nb / 10);
-	add_to_buff(type, nb % 10 + '0');
+		pf_putnbr(pf, nb / 10);
+	add_to_buff(pf, nb % 10 + '0');
 	return (0);
 }
 
-void		ft_padding(char c, t_pfstruct *type, long len)
+void		ft_padding(char c, t_pfstruct *pf, long len)
 {
 	while (len > 0)
 	{
-		add_to_buff(type, c);
+		add_to_buff(pf, c);
 		len--;
 	}
 }

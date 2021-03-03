@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 13:39:47 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/02 22:43:59 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/03 13:51:45 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void			add_to_buff(t_pfstruct *pf, char c)
 {
 	pf->buff[pf->x] = c;
 	pf->x++;
-	pf->buff_len = ft_strlen(pf->buff);
 	if (pf->x == BUFF_MAX)
 		empty_buff(pf);
 }
 
 void			empty_buff(t_pfstruct *pf)
 {
+	pf->buff_len += pf->x;
 	write(1, &pf->buff, pf->x);
 	pf->x = 0;
 }

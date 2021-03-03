@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 14:31:31 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/02 22:33:32 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/03 13:50:06 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,13 @@
 
 typedef struct		s_pflist
 {
-	int 	i;					// Simple iterator
-	int		j;					// Keep for flags
-	int		x;					// Total_len
-	// char 	y;					// ?
-	// char	stock;				// ?
-	// char 	*arg;				// ?
-	char	type;				// Keep for type (d / s...)
-	char	buff[BUFF_MAX];		// Buffer
-	int		buff_len;
+	int 		i;					// Simple iterator
+	int			j;					// Keep for flags
+	int			x;					// Total_len
+	char		type;				// Keep for type (d / s...)
+	char		buff[BUFF_MAX];		// Buffer
+	int			buff_len;
+	va_list		*iter;
 
 }					t_pfstruct;
 
@@ -48,6 +46,7 @@ typedef struct		s_fllist
 	int nb_width;
 	int	dot; 	// if there a dot
 	int dot_prec;	// Nb prec (start at - 1)
+	
 }					t_pfconv;
 
 int					ft_printf(const char *str, ...);
@@ -56,8 +55,8 @@ void				add_to_buff(t_pfstruct *pf, char c);
 void				empty_buff(t_pfstruct *pf);
 void				add_str_to_buff(t_pfstruct *pf, char *str);
 int					ft_count_nbr(long nb, long base);
-t_pfconv			*ft_parse(t_pfstruct *pf, t_pfconv *c_conv, const char *str, va_list iter);
-int					ft_all_type(t_pfstruct *pf, t_pfconv c_conv, va_list iter);
+t_pfconv			*ft_parse(t_pfstruct *pf, t_pfconv *c_conv, const char *str);
+int					ft_all_type(t_pfstruct *pf, t_pfconv c_conv);
 t_pfconv			*ft_reset(t_pfconv *c_conv);
 int					ft_type(char c);
 char				is_int(char c);
@@ -68,28 +67,22 @@ char				is_str(char c);
 char				is_char(char c);
 int					is_mod(char c);
 int					ft_isdigit(int c);
-int					ft_display_int(t_pfstruct *type, t_pfconv c_conv,
-					va_list iter);
-int					ft_display_u_int(t_pfstruct *type, t_pfconv c_conv,
-					va_list iter);
-int					ft_display_hex(t_pfstruct *type, t_pfconv c_conv,
-					va_list iter);
-int					ft_display_ptr(t_pfstruct *type, t_pfconv c_conv,
-					va_list iter);
-int					ft_display_str(t_pfstruct *type, t_pfconv c_conv,
-					va_list iter);
-int					ft_display_char(t_pfstruct *type, t_pfconv c_conv,
-					va_list iter);
-int					ft_display_mod(t_pfstruct *type, t_pfconv c_conv);
+int					ft_display_int(t_pfstruct *pf, t_pfconv *c_conv);
+int					ft_display_u_int(t_pfstruct *pf, t_pfconv *c_conv);
+int					ft_display_hex(t_pfstruct *pf, t_pfconv *c_conv);
+int					ft_display_ptr(t_pfstruct *pf, t_pfconv *c_conv);
+int					ft_display_str(t_pfstruct *pf, t_pfconv *c_conv);
+int					ft_display_char(t_pfstruct *pf, t_pfconv *c_conv);
+int					ft_display_mod(t_pfstruct *pf, t_pfconv *c_conv);
 void				ft_putnbr_base(long nb, char *base, t_pfstruct *pf);
-int					pf_putnbr(t_pfstruct *type, long nb);
-void				ft_padding(char c, t_pfstruct *type, long len);
+int					pf_putnbr(t_pfstruct *pf, long nb);
+void				ft_padding(char c, t_pfstruct *pf, long len);
 int					ft_max(long a, long b);
 size_t				ft_strlen(char *str);
-int					ft_atoi(char *str);
-void				ft_width(t_pfstruct *pf, t_pfconv *c_conv, const char *str, va_list iter);
-void				ft_dot(t_pfstruct *pf, t_pfconv *c_conv, const char *str, va_list iter);
-void 				ft_return_type(t_pfstruct *pf, t_pfconv *c_conv, va_list iter);
+int					ft_atoi(const char *str, int *i);
+void				ft_width(t_pfstruct *pf, t_pfconv *c_conv, const char *str);
+void				ft_dot(t_pfstruct *pf, t_pfconv *c_conv, const char *str);
+void 				ft_return_type(t_pfstruct *pf, t_pfconv *c_conv);
 
 #endif
 

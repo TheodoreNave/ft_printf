@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 14:28:39 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/02 23:07:58 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/03 15:14:07 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,31 @@ int		ft_isdigit(int c)
 	return (0);
 }
 
-t_pfconv	*ft_parse(t_pfstruct *pf, t_pfconv *c_conv, const char *str, va_list iter)
+t_pfconv	*ft_parse(t_pfstruct *pf, t_pfconv *c_conv, const char *str)
 {
-	if (str[pf->j] == '0')
+	while (str[pf->i] && !ft_type(str[pf->i]))
 	{
-		c_conv->zero = 1;
-		pf->j++;
+		if (str[pf->i] == '0')
+			c_conv->zero = 1;
+		else if (str[pf->i] == '-')
+			c_conv->dash = 1;
+		else if (str[pf->i] == '.')
+		{
+			c_conv->dot = 1;
+			c_conv->dot_prec = 0;
+		}
+		else if (ft_isdigit(str[pf->i]) && !c_conv->dot)
+			c_conv->nb_width = ft_atoi(str, &pf->i);
+		else if (ft_isdigit(str[pf->i]) && c_conv->dot)
+			c_conv->dot_prec = ft_atoi(str, &pf->i);
+		else if (str[pf->i] == '*') {
+			if (!c_conv->dot)
+				c_conv->nb_width = va_arg(*pf->iter, int);
+			else
+				c_conv->dot_prec = va_arg(*pf->iter, int);
+		}
+		pf->i++;
 	}
-	if (str[pf->j] == '-')
-	{
-		c_conv->dash = 1;
-		pf->j++;
-	}
-	ft_width(pf, c_conv, str, iter);
-	while (ft_isdigit(str[pf->j]))
-		pf->j++;
-	ft_dot(pf, c_conv, str, iter);
 	return (c_conv);
 }
 
@@ -50,10 +59,11 @@ int		ft_printf(const char *str, ...)
 {
 	t_pfstruct pf;
 	ft_memset(&pf, 0, sizeof(pf));
-	va_list iter;
+	va_list ap;
 	t_pfconv c_conv;
-	va_start(iter, str);
+	va_start(ap, str);
 
+	pf.iter = &ap;
 	while (str[pf.i])					
 	{									
 		if (str[pf.i] != '%')			  
@@ -61,28 +71,21 @@ int		ft_printf(const char *str, ...)
 		if (str[pf.i] == '%')
 		{
 			pf.i++;
-			pf.j = pf.i;
-			while (!ft_type(str[pf.i]))
-				pf.i++;				
+			ft_parse(&pf, ft_reset(&c_conv), str);
 			pf.type = str[pf.i];
-			ft_parse(&pf, ft_reset(&c_conv), str, iter);
-			ft_return_type(&pf, &c_conv, iter);
+			ft_return_type(&pf, &c_conv);
 		}
 		pf.i++;
 	}
 	empty_buff(&pf);
-	va_end(iter);
+	va_end(ap);
 	return (pf.buff_len);
 }
 
 // int main(void)
 // {
-	
-// 	// printf("\n");
-// 	// ft_printf(qw);	
-// 	// printf("\n");											// width < prec
-// 	// ft_printf("%s", "           abcdefghijklmnopqrstuvwxyz");	
+// 	printf("\n");
 // 	// printf("OG = %.0s", "theo");
 // 	// printf("OG = %.s", "theo");							// width > prec
-// 	// ft_printf("DA = %.0d", 0);
+// 	ft_printf("DA = %021s test", "theodore");
 // }

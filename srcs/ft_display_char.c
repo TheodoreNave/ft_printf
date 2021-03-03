@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 14:35:11 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/02 22:40:40 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/03 13:44:02 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,27 @@ char	is_char(char c)
 	return (c == 'c');
 }
 
-int		ft_display_char(t_pfstruct *type, t_pfconv c_conv, va_list iter)
+int		ft_display_char(t_pfstruct *pf, t_pfconv *c_conv)
 {
 	int	c;
 	int	i;
 
-	c = va_arg(iter, int);
+	c = va_arg(*pf->iter, int);
 	i = 1;
-	if (c_conv.dash == 1)
+	if (c_conv->dash == 1)
 	{
-		add_to_buff(type, (char)c);
-		ft_padding(' ', type, c_conv.nb_width - 1);
+		add_to_buff(pf, (char)c);
+		ft_padding(' ', pf, c_conv->nb_width - 1);
 		return (0);
 	}
-	if (c_conv.nb_width > i)
+	if (c_conv->nb_width > i)
 	{
-		ft_padding(' ', type, c_conv.nb_width - 1);
-		add_to_buff(type, (char)c);
+		ft_padding(' ', pf, c_conv->nb_width - 1);
+		add_to_buff(pf, (char)c);
 	}
 	else
 	{
-		add_to_buff(type, (char)c);
+		add_to_buff(pf, (char)c);
 	}
-	return (c_conv.nb_width);
+	return (c_conv->nb_width);
 }
