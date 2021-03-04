@@ -10,7 +10,8 @@ SRCS_LIST		= \
                     ft_display_mod.c \
 					ft_printf_utils.c \
                     ft_printf_utils2.c \
-                    ft_printf_utils3.c
+                    ft_printf_utils3.c \
+					ft_padding.c
 
 SRCS			= $(addprefix ${FOLDER}/, ${SRCS_LIST})
 

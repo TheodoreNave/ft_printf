@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 14:28:39 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/03 16:03:36 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/04 14:26:10 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ t_pfconv	*ft_parse(t_pfstruct *pf, t_pfconv *c_conv, const char *str)
 			c_conv->nb_width = ft_atoi(str, &pf->i);
 		else if (ft_isdigit(str[pf->i]) && c_conv->dot)
 			c_conv->dot_prec = ft_atoi(str, &pf->i);
-		else if (str[pf->i] == '*') {
+		else if (str[pf->i] == '*') 
+		{
 			if (!c_conv->dot)
 				c_conv->nb_width = va_arg(*pf->iter, int);
 			else
@@ -72,13 +73,7 @@ int		ft_printf(const char *str, ...)
 		{
 			pf.i++;
 			ft_parse(&pf, ft_reset(&c_conv), str);
-			if (c_conv.dot == 1 && c_conv.dot_prec < 0)
-				c_conv.dot = 0;
-			if (c_conv.nb_width < 0)
-			{
-				c_conv.dash = 1;
-				c_conv.nb_width = -c_conv.nb_width;
-			}
+			ft_flags(&c_conv);
 			pf.type = str[pf.i];
 			ft_return_type(&pf, &c_conv);
 		}
@@ -92,7 +87,7 @@ int		ft_printf(const char *str, ...)
 // int main(void)
 // {
 // 	printf("\n");
-// 	// printf("OG = %.0s", "theo");
-// 	printf("OG = %-12.6d", -42);
-// 	ft_printf("DA = %-12.6d", -42);
+// 	printf("OG = %-12.1d", 42);
+// 	printf("\n");
+// 	ft_printf("DA = %-12.1d", 42);
 // }

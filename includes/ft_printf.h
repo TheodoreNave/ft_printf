@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 14:31:31 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/03 13:50:06 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/04 14:56:42 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct		s_fllist
 	int nb_width;
 	int	dot; 	// if there a dot
 	int dot_prec;	// Nb prec (start at - 1)
-	
+	// int len;
 }					t_pfconv;
 
 int					ft_printf(const char *str, ...);
@@ -83,6 +83,9 @@ int					ft_atoi(const char *str, int *i);
 void				ft_width(t_pfstruct *pf, t_pfconv *c_conv, const char *str);
 void				ft_dot(t_pfstruct *pf, t_pfconv *c_conv, const char *str);
 void 				ft_return_type(t_pfstruct *pf, t_pfconv *c_conv);
+int					ft_before_diux(t_pfstruct *pf, t_pfconv *c_conv, long nb, long i);
+void				ft_flags(t_pfconv *c_conv);
+int					ft_after(t_pfstruct *pf, t_pfconv *c_conv, long nb, long i);
 
 #endif
 
