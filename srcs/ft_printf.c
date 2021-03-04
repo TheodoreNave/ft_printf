@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 14:28:39 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/04 14:26:10 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/04 19:24:38 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int		ft_printf(const char *str, ...)
 // int main(void)
 // {
 // 	printf("\n");
-// 	printf("OG = %-12.1d", 42);
+// 	printf("%-*.*s", -7, -3, "yolo");
 // 	printf("\n");
-// 	ft_printf("DA = %-12.1d", 42);
+// 	ft_printf("%-*.*s", -7, -3, "yolo");
 // }

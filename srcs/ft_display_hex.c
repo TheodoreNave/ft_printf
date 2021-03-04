@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 12:25:13 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/03 13:44:32 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/04 19:56:49 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ int		ft_display_hex(t_pfstruct *pf, t_pfconv *c_conv)
 		neg = 1;
 		c_conv->dot_prec++;
 	}
-		// printf("len = %d\n", len);
-
 	if (c_conv->dot == 1 && c_conv->dot_prec < 0)
 		c_conv->dot = 0;
 

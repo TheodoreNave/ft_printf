@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 14:31:31 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/04 14:56:42 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/04 19:37:03 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct		s_pflist
 	char		type;				// Keep for type (d / s...)
 	char		buff[BUFF_MAX];		// Buffer
 	int			buff_len;
+	int			neg;
 	va_list		*iter;
 
 }					t_pfstruct;
@@ -85,7 +86,7 @@ void				ft_dot(t_pfstruct *pf, t_pfconv *c_conv, const char *str);
 void 				ft_return_type(t_pfstruct *pf, t_pfconv *c_conv);
 int					ft_before_diux(t_pfstruct *pf, t_pfconv *c_conv, long nb, long i);
 void				ft_flags(t_pfconv *c_conv);
-int					ft_after(t_pfstruct *pf, t_pfconv *c_conv, long nb, long i);
+int					ft_after(t_pfstruct *pf, t_pfconv *c_conv, long i);
 
 #endif
 
