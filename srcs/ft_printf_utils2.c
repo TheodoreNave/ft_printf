@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 13:39:47 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/03 13:51:45 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/05 10:53:35 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_pfconv		*ft_reset(t_pfconv *c_conv)
 	c_conv->zero = 0;
 	c_conv->dash = 0;
 	c_conv->width = 0;
-	c_conv->nb_width = 0;					// assigner a -1 ensuite ? comme nb_width * -1
+	c_conv->nb_width = 0;
 	c_conv->dot = 0;
 	c_conv->dot_prec = -1;
 	return (c_conv);

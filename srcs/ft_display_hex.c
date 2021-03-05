@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 12:25:13 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/04 19:56:49 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/05 10:53:53 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ int		ft_display_hex(t_pfstruct *pf, t_pfconv *c_conv)
 	}
 	if (c_conv->zero == 1 && c_conv->nb_width >= c_conv->dot_prec && c_conv->dot == 1 && c_conv->dot_prec >= 1)
 	{
-		// ft_padding(' ', type, c_conv->nb_width - (ft_max(len, c_conv->dot_prec)));
 		if (pf->type == 'X')
 			ft_putnbr_base(nb, "0123456789ABCDEF", pf);
 		if (pf->type == 'x')
