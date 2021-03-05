@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 13:39:47 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/05 10:53:35 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/05 13:31:33 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_pfconv		*ft_reset(t_pfconv *c_conv)
 	c_conv->width = 0;
 	c_conv->nb_width = 0;
 	c_conv->dot = 0;
-	c_conv->dot_prec = -1;
+	c_conv->dot_prec = 0;
 	return (c_conv);
 }
 

@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 14:40:30 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/05 13:03:06 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/05 15:24:52 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int		ft_display_int(t_pfstruct *pf, t_pfconv *c_conv)
 	nb = va_arg(*pf->iter, int);
 	len = ft_count_nbr(nb, 10);
 	i = len;
-
 	if (nb <= INT_MIN)
 	{
 			add_str_to_buff(pf, "-2147483648");
@@ -64,6 +63,6 @@ int				ft_display_u_int(t_pfstruct *pf, t_pfconv *c_conv)
 	if (!ft_before_diux(pf, c_conv, nb, i))
 		return (0);
 	pf_putnbr(pf, nb);
-	ft_after(pf, c_conv, i);
+	// ft_after(pf, c_conv, i);
 	return (0);
 }

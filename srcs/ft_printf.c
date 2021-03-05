@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 14:28:39 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/05 12:52:40 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/05 15:57:14 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,16 @@ t_pfconv	*ft_parse(t_pfstruct *pf, t_pfconv *c_conv, const char *str)
 {
 	while (str[pf->i] && !ft_type(str[pf->i]))
 	{
-		if (str[pf->i] == '0')
-			c_conv->zero = 1;
-		else if (str[pf->i] == '-')
+		if (str[pf->i] == '-')
 			c_conv->dash = 1;
 		else if (str[pf->i] == '.')
-		{
 			c_conv->dot = 1;
-			c_conv->dot_prec = 0;
-		}
-		else if (ft_isdigit(str[pf->i]) && !c_conv->dot)
+		else if (str[pf->i] != '0' && ft_isdigit(str[pf->i]) && !c_conv->dot)
 			c_conv->nb_width = ft_atoi(str, &pf->i);
-		else if (ft_isdigit(str[pf->i]) && c_conv->dot)
+		else if (str[pf->i] != '0' && ft_isdigit(str[pf->i]) && c_conv->dot)
 			c_conv->dot_prec = ft_atoi(str, &pf->i);
+		else if (str[pf->i] == '0')
+			c_conv->zero = 1;
 		else if (str[pf->i] == '*') 
 		{
 			if (!c_conv->dot)
@@ -87,7 +84,7 @@ int		ft_printf(const char *str, ...)
 // int main(void)
 // {
 // 	printf("\n");
-// 	printf("OG = %-.i", 8);
+// 	printf("OG = [%.0d]", 0);
 // 	printf("\n");
-// 	ft_printf("DA = %-.i", 8);
+// 	ft_printf("DA = [%.0d]", 0);
 // }
