@@ -6,19 +6,11 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 11:26:23 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/04 19:56:42 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/06 16:38:19 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-
-	// printf("\n");
-	// printf("len of nb = %d\n", i);
-	// printf("dot = %d\n", c_conv.dot);
-	// printf("zero = %d\n", c_conv.zero);
-	// printf("dash = %d\n", c_conv.dash);
-	// printf("width = %d\n", c_conv.width);
-	// printf("prec = %d\n", c_conv.prec);
 
 size_t		ft_strlen(char *str)
 {

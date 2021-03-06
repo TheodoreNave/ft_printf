@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 14:15:03 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/05 10:53:29 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/06 16:39:17 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void			ft_putnbr_base(long nb, char *base, t_pfstruct *pf)
 	else
 		add_to_buff(pf, base[nb]);
 }
-		   
+
 int				ft_atoi(const char *str, int *i)
 {
 	long int	res;
@@ -51,6 +51,6 @@ void			ft_return_type(t_pfstruct *pf, t_pfconv *c_conv)
 		ft_display_str(pf, c_conv);
 	if (is_char(pf->type))
 		ft_display_char(pf, c_conv);
-	if (is_mod(pf->type))       
+	if (is_mod(pf->type))
 		ft_display_mod(pf, c_conv);
 }
