@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 14:31:31 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/04 19:37:03 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/07 22:13:01 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,19 @@
 # include <stdarg.h>
 # include <stdint.h>
 # include <limits.h>
-
-
 # include <stdlib.h>
-# include <stdio.h>
 
+# include <stdio.h>
 
 # define BUFF_MAX 256
 
 typedef struct		s_pflist
 {
-	int 		i;					// Simple iterator
-	int			j;					// Keep for flags
-	int			x;					// Total_len
-	char		type;				// Keep for type (d / s...)
-	char		buff[BUFF_MAX];		// Buffer
+	int			i;
+	int			j;
+	int			x;
+	char		type;
+	char		buff[BUFF_MAX];
 	int			buff_len;
 	int			neg;
 	va_list		*iter;
@@ -41,13 +39,12 @@ typedef struct		s_pflist
 
 typedef struct		s_fllist
 {
-	int zero;	// 0 or not
-	int dash;	// Dash or not
-	int width;	// Largeur after 0 or -
+	int zero;
+	int dash;
+	int width;
 	int nb_width;
-	int	dot; 	// if there a dot
-	int dot_prec;	// Nb prec (start at - 1)
-	// int len;
+	int	dot;
+	int dot_prec;
 }					t_pfconv;
 
 int					ft_printf(const char *str, ...);
@@ -56,7 +53,8 @@ void				add_to_buff(t_pfstruct *pf, char c);
 void				empty_buff(t_pfstruct *pf);
 void				add_str_to_buff(t_pfstruct *pf, char *str);
 int					ft_count_nbr(long nb, long base);
-t_pfconv			*ft_parse(t_pfstruct *pf, t_pfconv *c_conv, const char *str);
+t_pfconv			*ft_parse(t_pfstruct *pf, t_pfconv *c_conv,
+					const char *str);
 int					ft_all_type(t_pfstruct *pf, t_pfconv c_conv);
 t_pfconv			*ft_reset(t_pfconv *c_conv);
 int					ft_type(char c);
@@ -83,12 +81,16 @@ size_t				ft_strlen(char *str);
 int					ft_atoi(const char *str, int *i);
 void				ft_width(t_pfstruct *pf, t_pfconv *c_conv, const char *str);
 void				ft_dot(t_pfstruct *pf, t_pfconv *c_conv, const char *str);
-void 				ft_return_type(t_pfstruct *pf, t_pfconv *c_conv);
-int					ft_before_diux(t_pfstruct *pf, t_pfconv *c_conv, long nb, long i);
+void				ft_return_type(t_pfstruct *pf, t_pfconv *c_conv);
+int					ft_before_diux(t_pfstruct *pf, t_pfconv *c_conv,
+					long nb, long i);
 void				ft_flags(t_pfconv *c_conv);
 int					ft_after(t_pfstruct *pf, t_pfconv *c_conv, long i);
+int					ft_before_str(t_pfstruct *pf, t_pfconv *c_conv,
+					char *str, int len);
+int					ft_after_str_1(t_pfstruct *pf, t_pfconv *c_conv,
+					char *str, int len);
+int					ft_after_str_2(t_pfstruct *pf, t_pfconv *c_conv,
+					char *str, int len);
 
 #endif
-
-
-// si dash == 1 si width > 0 et si prec == 0 et si nb == 0 retourner width
