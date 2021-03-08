@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 12:22:08 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/08 15:40:44 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/08 18:47:35 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void				ft_flags(t_pfstruct *pf, t_pfconv *c_conv)
 		c_conv->zero = 0;
 		c_conv->nb_width = -c_conv->nb_width;
 	}
-	if (c_conv->zero && c_conv->dot && pf->type != '%')
+	if (c_conv->zero && c_conv->dot && pf->type != '%' && pf->type != 'c'
+		&& pf->type != 'p')
 	{
 		c_conv->zero = 0;
 		c_conv->dash = 0;

@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 14:28:39 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/08 15:40:51 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/08 18:48:50 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,3 @@ int					ft_printf(const char *str, ...)
 	va_end(ap);
 	return (pf.buff_len);
 }
-
-// #include <stdio.h>
-
-// int main()
-// {
-// 	printf("OG = |%015.6%|\n");
-// 	printf("\n");
-// 	ft_printf("DA = |%015.6%|\n");
-// }

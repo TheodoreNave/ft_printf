@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 14:16:00 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/08 15:35:26 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/08 17:50:10 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,7 @@ int			ft_display_mod(t_pfstruct *pf, t_pfconv *c_conv)
 		ft_padding(' ', pf, c_conv->nb_width - 1);
 		return (0);
 	}
-	if (c_conv->zero && !c_conv->dot)
-	{
-		ft_padding('0', pf, c_conv->nb_width - 1);
-		add_to_buff(pf, (char)c);
-		return (0);
-	}
-	if (!c_conv->zero && c_conv->dot)
-	{
-		ft_padding(' ', pf, c_conv->nb_width - 1);
-		add_to_buff(pf, (char)c);
-		return (0);
-	}
-	if (c_conv->zero && c_conv->dot)
+	if (c_conv->zero)
 	{
 		ft_padding('0', pf, c_conv->nb_width - 1);
 		add_to_buff(pf, (char)c);

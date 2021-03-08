@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 14:31:31 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/08 15:41:50 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/08 19:01:26 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ void				add_str_to_buff(t_pfstruct *pf, char *str);
 int					ft_count_nbr(long nb, long base);
 t_pfconv			*ft_parse(t_pfstruct *pf, t_pfconv *c_conv,
 					const char *str);
-int					ft_all_type(t_pfstruct *pf, t_pfconv c_conv);
 t_pfconv			*ft_reset(t_pfconv *c_conv);
 int					ft_type(char c);
 char				is_int(char c);
@@ -77,8 +76,6 @@ void				ft_padding(char c, t_pfstruct *pf, long len);
 int					ft_max(long a, long b);
 size_t				ft_strlen(char *str);
 int					ft_atoi(const char *str, int *i);
-void				ft_width(t_pfstruct *pf, t_pfconv *c_conv, const char *str);
-void				ft_dot(t_pfstruct *pf, t_pfconv *c_conv, const char *str);
 void				ft_return_type(t_pfstruct *pf, t_pfconv *c_conv);
 int					ft_before_diux(t_pfstruct *pf, t_pfconv *c_conv,
 					long nb, long i);
