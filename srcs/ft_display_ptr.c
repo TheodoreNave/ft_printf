@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 12:25:15 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/06 16:35:33 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/08 13:21:48 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ char				is_ptr(char c)
 
 int					ft_display_ptr(t_pfstruct *pf, t_pfconv *c_conv)
 {
-	uintmax_t		nb;
+	uintptr_t		nb;
 	int				i;
 	int				len;
 
-	nb = (uintmax_t)va_arg(*pf->iter, void *);
+	nb = (uintptr_t)va_arg(*pf->iter, uintptr_t);
 	i = ft_count_nbr(nb, 16);
 	len = i + 2;
 	if (nb == 0 && c_conv->dot_prec == 0)

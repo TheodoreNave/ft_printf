@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 14:31:31 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/07 22:13:01 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/08 13:25:24 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 # include <stdint.h>
 # include <limits.h>
 # include <stdlib.h>
-
-# include <stdio.h>
 
 # define BUFF_MAX 256
 

@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 12:22:08 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/07 22:02:32 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/08 13:22:31 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,27 +74,15 @@ int					ft_after(t_pfstruct *pf, t_pfconv *c_conv, long i)
 int					ft_before_str(t_pfstruct *pf, t_pfconv *c_conv,
 					char *str, int len)
 {
-	if (c_conv->dash == 0 && c_conv->dot == 0 && c_conv->dot_prec == -1)
+	if (!c_conv->dash)
 	{
 		ft_padding(' ', pf, c_conv->nb_width - len);
 		add_str_to_buff(pf, str);
-		return (0);
 	}
-	if (c_conv->dash == 0 && c_conv->nb_width > 0 && c_conv->dot_prec == -1)
-	{
-		ft_padding(' ', pf, c_conv->nb_width);
-		if (c_conv->dot_prec == 0)
-			ft_padding(' ', pf, c_conv->nb_width - len + c_conv->dot_prec);
-		return (0);
-	}
-	if (c_conv->dash == 1 && c_conv->nb_width > 0 && c_conv->dot == 0)
+	else
 	{
 		add_str_to_buff(pf, str);
-		if (c_conv->dot_prec == -1)
-			ft_padding(' ', pf, c_conv->nb_width - len);
-		else
-			ft_padding(' ', pf, c_conv->nb_width - len + len);
-		return (0);
+		ft_padding(' ', pf, c_conv->nb_width - len);
 	}
-	return (1);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 11:26:23 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/06 16:38:19 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/08 13:02:16 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ size_t		ft_strlen(char *str)
 
 int			pf_putnbr(t_pfstruct *pf, long nb)
 {
-	if (nb < 0 && nb != INT_MIN)
+	if (nb < 0)
 		nb = -nb;
 	if (nb >= 10)
 		pf_putnbr(pf, nb / 10);
