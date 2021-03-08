@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 12:22:08 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/08 14:24:54 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/08 14:34:09 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void				ft_flags(t_pfconv *c_conv)
 		c_conv->zero = 0;
 		c_conv->dash = 0;
 	}
-
 }
 
 int					ft_before_diux(t_pfstruct *pf, t_pfconv *c_conv,
