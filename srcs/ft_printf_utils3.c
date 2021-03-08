@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 14:15:03 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/08 14:21:26 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/08 14:59:18 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ void			ft_putnbr_base(long nb, char *base, t_pfstruct *pf)
 	if (nb == LONG_MIN)
 	{
 		add_str_to_buff(pf, "8000000000000000");
+		return ;
+	}
+	if ((unsigned long)nb == ULONG_MAX)
+	{
+		add_str_to_buff(pf, "ffffffffffffffff");
 		return ;
 	}
 	if (nb >= (long)ft_strlen(base))

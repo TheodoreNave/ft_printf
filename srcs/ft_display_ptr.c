@@ -6,11 +6,12 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 12:25:15 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/08 13:21:48 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/08 15:12:19 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+#include <stdio.h>
 
 char				is_ptr(char c)
 {

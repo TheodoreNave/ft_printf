@@ -29,8 +29,6 @@ all:			${NAME}
 $(NAME):		${OBJS}
 				@ar -rcs ${NAME} ${OBJS}
 
-bonus:			${NAME}
-
 %.o: %.c
 				@${CC} ${CFLAGS} -I ${HEADER} -o $@ -c $<
 

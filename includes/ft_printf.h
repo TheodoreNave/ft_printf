@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 14:31:31 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/08 14:21:33 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/08 15:41:50 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void				ft_dot(t_pfstruct *pf, t_pfconv *c_conv, const char *str);
 void				ft_return_type(t_pfstruct *pf, t_pfconv *c_conv);
 int					ft_before_diux(t_pfstruct *pf, t_pfconv *c_conv,
 					long nb, long i);
-void				ft_flags(t_pfconv *c_conv);
+void				ft_flags(t_pfstruct *pf, t_pfconv *c_conv);
 int					ft_after(t_pfstruct *pf, t_pfconv *c_conv, long i);
 int					ft_before_str(t_pfstruct *pf, t_pfconv *c_conv,
 					char *str, int len);

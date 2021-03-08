@@ -6,13 +6,13 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 12:22:08 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/08 14:34:09 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/08 15:40:44 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void				ft_flags(t_pfconv *c_conv)
+void				ft_flags(t_pfstruct *pf, t_pfconv *c_conv)
 {
 	if (c_conv->zero && c_conv->dash)
 		c_conv->zero = 0;
@@ -29,7 +29,7 @@ void				ft_flags(t_pfconv *c_conv)
 		c_conv->zero = 0;
 		c_conv->nb_width = -c_conv->nb_width;
 	}
-	if (c_conv->zero == 1 && c_conv->dot)
+	if (c_conv->zero && c_conv->dot && pf->type != '%')
 	{
 		c_conv->zero = 0;
 		c_conv->dash = 0;
