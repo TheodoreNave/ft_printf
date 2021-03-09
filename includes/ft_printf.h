@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 14:31:31 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/08 19:01:26 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/09 23:58:37 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct		s_fllist
 	int nb_width;
 	int	dot;
 	int dot_prec;
+	int ox;
 }					t_pfconv;
 
 int					ft_printf(const char *str, ...);
@@ -87,5 +88,7 @@ int					ft_after_str_1(t_pfstruct *pf, t_pfconv *c_conv,
 					char *str, int len);
 int					ft_after_str_2(t_pfstruct *pf, t_pfconv *c_conv,
 					char *str, int len);
+int					print_begin(t_pfstruct *pf, t_pfconv *c_co,
+					uintptr_t nb, int len);
 
 #endif

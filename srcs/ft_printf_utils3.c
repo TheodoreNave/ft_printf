@@ -6,7 +6,7 @@
 /*   By: tnave <tnave@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 14:15:03 by tnave             #+#    #+#             */
-/*   Updated: 2021/03/08 14:59:18 by tnave            ###   ########.fr       */
+/*   Updated: 2021/03/09 23:58:16 by tnave            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,27 @@ void			ft_return_type(t_pfstruct *pf, t_pfconv *c_conv)
 		ft_display_char(pf, c_conv);
 	if (is_mod(pf->type))
 		ft_display_mod(pf, c_conv);
+}
+
+int				print_begin(t_pfstruct *pf,
+				t_pfconv *c_co, uintptr_t nb, int len)
+{
+	if (pf->type == 'p' && c_co->dot && c_co->dash)
+		c_co->ox = 1;
+	if (pf->type == 'p' && c_co->dot && c_co->dash && c_co->ox && nb == 0)
+	{
+		add_str_to_buff(pf, "0x");
+		ft_padding(' ', pf, c_co->nb_width - len + 1);
+		return (0);
+	}
+	if (nb == 0 && c_co->dot_prec == 0)
+	{
+		ft_padding(' ', pf, c_co->nb_width - (ft_max(--len, c_co->dot_prec)));
+		add_str_to_buff(pf, "0x");
+		return (0);
+	}
+	if (c_co->dash == 0 && c_co->zero == 0)
+		ft_padding(' ', pf, c_co->nb_width - (ft_max(len, c_co->dot_prec)));
+	ft_padding('0', pf, c_co->dot_prec - len);
+	return (1);
 }
